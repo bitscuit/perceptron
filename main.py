@@ -3,7 +3,10 @@ import numpy as np
 import pprint
 
 trainingData = np.loadtxt('testSeeds.csv', delimiter=',') # read csv file
-normalized = trainingData / trainingData.max(axis=0) # normalize data
+normalized = trainingData[:, :-1] / trainingData[:, :-1].max(axis=0) # normalize data
+trainingData[:, :-1] = normalized
+
+ITERATIONS = 3
 
 def yeetWheat(bias, input, weights):
     # add bias for neuron to determine it's own 
@@ -22,7 +25,18 @@ def perceptron():
     y2 = yeetWheat(bias, input, weights2)
     return str(y1) + str(y2)
 
-# pprint.pprint(trainingData)
-# pprint.pprint(normalized)
+def wheatifyPerceptron():
+    # loop over iterations
+        # loop over dataset
+            # perceptron on a single row
+            # compare result of perceptron with desired output
+            # update weights
+        # check how many were correctly classified
+        # maybe stop if accurate enough
+        # maybe update weights
+    return 'weights'
+
+pprint.pprint(trainingData)
+# pprint.pprint(normalized[:-1])
 
 print(perceptron())
